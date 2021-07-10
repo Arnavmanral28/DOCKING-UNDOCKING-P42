@@ -26,8 +26,12 @@ function setup() {
   iss.addImage(issImg);
   iss.scale = 1;
 
-  dock = createSprite(335,310,5,5);
+  dock = createSprite(335,331,5,5);
   dock.shapeColor = "red"
+
+  //dock.debug = true;
+
+  //spaceCraft.debug = true;
 
  
 
@@ -39,27 +43,33 @@ function draw() {
   
   if(keyIsDown(RIGHT_ARROW)){
     spaceCraft.x +=2
-    spaceCraft.changeImage(spaceCraftImg4)
+    spaceCraft.addImage(spaceCraftImg4);
+    spaceCraft.scale = 0.27
   } 
   if(keyIsDown(LEFT_ARROW)){
     spaceCraft.x -=2
-    spaceCraft.changeImage(spaceCraftImg3)
+    spaceCraft.addImage(spaceCraftImg3)
+    spaceCraft.scale = 0.27
   } 
   if(keyIsDown(UP_ARROW)){
     spaceCraft.y -=2
-    spaceCraft.changeImage(spaceCraftImg2)
+    spaceCraft.addImage(spaceCraftImg2)
+    spaceCraft.scale = 0.27
   } 
   if(keyIsDown(DOWN_ARROW)){
-    spaceCraft.y +=2
+    spaceCraft.y +=2;
   }
 
   if(spaceCraft.isTouching(dock)){
      textSize(40);
      fill("white")
      text("Docking Succesful!",200,700)
+     
   }
   dock.setCollider("circle",0,0,0.1)
+  spaceCraft.setCollider("circle",0,0,340)
 
-  dock.visible =false;
+
+  dock.visible = false;
   drawSprites();
 }
